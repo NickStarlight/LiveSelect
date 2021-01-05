@@ -256,7 +256,7 @@ class LiveSelect extends Component
      */
     protected function emitSelectedEvent() : void
     {
-        $this->emit('live-select-updated', [
+        $this->emitUp('live-select-updated', [
             'model' => $this->model,
             'data' => $this->selected
         ]);
