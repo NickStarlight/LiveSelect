@@ -121,7 +121,7 @@ class LiveSelect extends Component
      */
     protected $listeners = [ 'live-select-errors' => 'replicateErrorBag' ];
 
-    public function mount(string $description = '', bool $search = false, bool $multi = false, string $label = null, string $value, array $options, string $model, array $default = null) : void
+    public function mount(string $description = '', bool $search = false, bool $multi = false, string $label = null, string $value = null, array $options, string $model, array $default = null) : void
     {
         $this->multiMode = $multi;
         $this->searchMode = $search;
