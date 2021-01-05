@@ -1,0 +1,28 @@
+{
+    "name": "nickstarlight/live-select",
+    "description": "A customizable dropdown component made with Laravel, Alpine, Livewire and TailwindCSS.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nick Gomes Moraes",
+            "email": "contato@nickgomes.dev"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "livewire/livewire": "^2"
+    },
+    "autoload": {
+        "psr-4": {
+            "LiveSelect\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LiveSelect\\LiveSelectServiceProvider"
+            ]
+        }
+    }
+}
