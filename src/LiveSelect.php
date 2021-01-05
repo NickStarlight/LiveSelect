@@ -105,6 +105,13 @@ class LiveSelect extends Component
     public array $selected = [];
 
     /**
+     * The default selected values on the dropdown.
+     * 
+     * @var array
+     */
+    public $default;
+
+    /**
      * The default LiveSelect event listeners.
      * live-select-errors => Used for replicating
      * the parent-validation errors to nested LiveSelect
@@ -114,15 +121,19 @@ class LiveSelect extends Component
      */
     protected $listeners = [ 'live-select-errors' => 'replicateErrorBag' ];
 
-    public function mount(string $description = '', bool $search = false, bool $multi = false, string $label, string $value, array $options, string $model) : void
+    public function mount(string $description = '', bool $search = false, bool $multi = false, string $label = null, string $value, array $options, string $model, array $default = null) : void
     {
         $this->multiMode = $multi;
         $this->searchMode = $search;
         $this->description = $description;
         $this->model = $model;
-        $this->label = $label;
-        $this->value = $value;
+        $this->label = $label !== null ? $label : 'label';
+        $this->value = $value !== null ? $value : 'value';
         $this->searchText = '';
+        $this->default = $default;
+
+        /** We only check if the default is selected once */
+        $this->checkDefaultSelected();
 
         /**
          * The user can submit an Eloquent Collection straight away, if that's
@@ -150,6 +161,23 @@ class LiveSelect extends Component
     }
 
     /**
+     * Checks if a default option has been provided.
+     * 
+     * This is useful for pre-filled select dropdowns
+     * like 'user-state => active/inactive'
+     * 
+     * @return void
+     */
+    public function checkDefaultSelected() : void
+    {
+        if ($this->default !== null) {
+            foreach ($this->default as $value) {
+                $this->updateSelectedOptions($value);
+            }
+        }
+    }
+
+    /**
      * Updates the array containing the selected options.
      * 
      * This will overwrite the liveSelectSelected array if 
@@ -157,6 +185,8 @@ class LiveSelect extends Component
      * this will append or remove the option from the array,
      * depending wether the option is already in it based
      * on the liveSelectLabel(if set) and liveSelectValue(if set).
+     * 
+     * @param mixed $value The value to be pushed to the selected options
      * 
      * @return void
      */

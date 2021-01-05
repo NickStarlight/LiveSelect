@@ -58,8 +58,8 @@ class YourComponent extends Component
         :search="true"                  // Allows the user to filter values on the dropdown            - Defaults to false
         :description="'Select a value'" // The input label                                             - Defaults to null
         :options="$data"                // The options that will be rendered on the dropdown           - Required
-        :label="'name'"                 // The key/value pair to be used as the options label          - Required
-        :value="'id'"                   // The key/value pair to be used as the options value          - Required
+        :label="'name'"                 // The key/value pair to be used as the options label          - Optional, will assume 'label' if omitted
+        :value="'id'"                   // The key/value pair to be used as the options value          - Optional, will assume 'value' if omitted
         :model="'yourModel'"            // Your parent component public variable name for data binding - Required
     >
 </div>
