@@ -12,6 +12,7 @@
     aria-expanded="true" 
     aria-labelledby="listbox-label"
     class="@error($model) border-red-300 @enderror relative w-full py-2 pl-5 pr-10 text-left bg-white border border-gray-300 rounded-md shadow-sm cursor-default focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-40 sm:text-sm"
+    style="z-index: 900;"
     >
     <span class="flex justify-between">
         @if (sizeof($selected) === 0)
