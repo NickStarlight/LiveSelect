@@ -18,7 +18,8 @@
             x-transition:leave="transition ease-in duration-100"
             x-transition:leave-start="opacity-100"
             x-transition:leave-end="opacity-0"
-            class="absolute w-full mt-1 bg-white">
+            class="absolute w-full mt-1 bg-white"
+            style="display: none;">
             
             {{-- Start: Search Input --}}
             @if ($searchMode)
@@ -36,7 +37,7 @@
                 tabindex="-1" 
                 role="listbox" 
                 aria-labelledby="listbox-label"
-                class="py-1 z-50 overflow-auto text-base shadow-lg {{ $searchMode ? 'rounded-b-md' : 'rounded-md' }} max-h-56 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                class="py-1 z-50 overflow-auto text-base shadow-md {{ $searchMode ? 'rounded-b-md' : 'rounded-md' }} max-h-56 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                 @if (sizeof($sortedOptions) === 0)
                     <li class="relative px-2 py-2 text-gray-900 cursor-default select-none pr-9">
                         <div class="flex items-center">
